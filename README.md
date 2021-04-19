@@ -14,8 +14,8 @@ Quando o usuário digitar um valor dentro do intervalo de treinamento, mostre o 
 Faça um vídeo de até 10 minutos para apresentar o trabalho.
 
 # Equipe:
-<i>Danilo Jose da Silva</i> 
-<i>Acir Marconato Junior</i>
+- Danilo Jose da Silva
+- Acir Marconato Junior
 
 # Resultados do Treinamento:
 
