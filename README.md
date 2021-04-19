@@ -17,5 +17,12 @@ Faça um vídeo de até 10 minutos para apresentar o trabalho.
 - Danilo Jose da Silva
 - Acir Marconato Junior
 
+# Bibliotecas Necessarias:
+Instalar as seguintes bibliotecas urilizando o pip:
+- pip install openpyxl
+- pip install xlrd
+- pip install pandas
+- pip install pybrain
+
 # Resultados do Treinamento:
 
