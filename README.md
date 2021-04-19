@@ -1,5 +1,5 @@
 # Rede-Neural-Artificial
-Trabalho envolve o desenvolvimento de um rede neural artificial (RNA).
+Trabalho envolve o desenvolvimento de um rede neural artificial (RNA) para a disciplina EMB5617 - Sistemas Inteligentes ministrada na UFSC Joinville.
 
 # Enunciado do trabalho:
 Para o trabalho utilize os dados disponíveis no arquivo "Dados para o trabalho sobre RNA". O arquivo consiste de uma planilha eletrônica com dados de entrada (uma sequência numérica) e saída (resultado de funções). O comportamento da entrada e saída é mostrado em um gráfico disponível no arquivo.  O objetivo do trabalho consiste em treinar uma rede neural artificial (RNA) para estimar os valores de "Saída" a partir dos valores de "Entrada".
