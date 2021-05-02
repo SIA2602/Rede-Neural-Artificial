@@ -20,11 +20,15 @@ for i in range(len(df['Entrada'])):
     RNAdata.addSample(float(df['Entrada'][i]/max(df['Entrada'])), float(df['Saída'][i]/max(df['Saída']))) #normalizando dados de 0 a 1
 
 #Inicializando rede Neural
-RNA = buildNetwork(1, 10, 100, 1000, 100, 10, 1, bias=True) #buildNetwork(num Neuronios na entrada, num neuronio na camada oculta, num neuronio na saida)
+RNA = buildNetwork(1, 1000, 1000, 1000, 1, bias=True) #buildNetwork(num Neuronios na entrada, num neuronio na camada oculta, num neuronio na saida)
+#print(RNA['in'])
+#print(RNA['hidden0'])
+#print(RNA['out'])
+#print(RNA['bias'])
 
 #Treinamento
 trainer = BackpropTrainer(RNA, RNAdata)
-for i in range(10000): #treinando a rede neural com numero de epocas
+for i in range(1000): #treinando a rede neural com numero de epocas
     trainer.train()
 
 #Simulando saida de dados     
