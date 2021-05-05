@@ -20,7 +20,7 @@ for i in range(len(df['Entrada'])):
     RNAdata.addSample(float(df['Entrada'][i]/max(df['Entrada'])), float(df['Saída'][i]/max(df['Saída']))) #normalizando dados de 0 a 1
 
 #Inicializando rede Neural
-RNA = buildNetwork(1, 100, 100, 100, 100, 100, 1, bias=True) #buildNetwork(num Neuronios na entrada, num neuronio na camada oculta, num neuronio na saida)
+RNA = buildNetwork(1, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 1, bias=True) #buildNetwork(num Neuronios na entrada, num neuronio na camada oculta, num neuronio na saida)
 #print(RNA['in'])
 #print(RNA['hidden0'])
 #print(RNA['out'])
@@ -28,8 +28,11 @@ RNA = buildNetwork(1, 100, 100, 100, 100, 100, 1, bias=True) #buildNetwork(num N
 
 #Treinamento
 trainer = BackpropTrainer(RNA, RNAdata)
+x_err = [] #lista que vai armazenar o range de epocas
+y_err = [] #lista que vai armazenar o erro em %
 for i in range(10000): #treinando a rede neural com numero de epocas
-    trainer.train()
+    y_err.append(trainer.train()*100)
+    x_err.append(i+1)
 
 #Simulando saida de dados     
 #saida = RNA.activate([0.40])*max(df['Saída']) #convetendo valor normalizado para mesma escala dos dados de saida
@@ -47,5 +50,9 @@ fig, ax = plt.subplots()
 ax.plot(df['Entrada'], df['Saída'])
 ax.plot(entrada, saida, '-')
 ax.grid()
+
+fig, ax1 = plt.subplots()
+ax1.plot(x_err, y_err, '-')
+ax1.grid()
 
 plt.show()
