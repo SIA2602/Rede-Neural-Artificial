@@ -40,10 +40,10 @@ Para investigar em como chegar em valores "ideais" adotamos valores iniciais par
 Foi realizado um estudo de erro e como ele varia de acordo com o numero de épocas.
 
 ###### Grafico de Erro: ÉPOCAS x %:
-![Grafico 01](https://postimg.cc/BPcfShkL "Grafico 01")
-![Grafico 02](https://postimg.cc/7bgkn6hH "Grafico 02")
-![Grafico 03](https://postimg.cc/Ln2MCpgz "Grafico 03")
-![Grafico 04](https://postimg.cc/bsgf4B14 "Grafico 04")
+![Grafico 01](https://i.postimg.cc/cCPxc2cm/Erro01.png "Grafico 01")
+![Grafico 02](https://i.postimg.cc/kMHg9Rdb/Erro02.png "Grafico 02")
+![Grafico 03](https://i.postimg.cc/bN2NvYzF/Erro03.png "Grafico 03")
+![Grafico 04](https://i.postimg.cc/RZ5CJrhC/Erro04.png "Grafico 04")
 
 ##### Variando Número de Camadas:
 Nesse teste o objetivo foi **variar o número de camadas** e os demais estarem fixados afim de ver o seu impacto frente as outras variaveis.<br>

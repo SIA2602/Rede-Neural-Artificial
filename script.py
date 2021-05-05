@@ -20,7 +20,7 @@ for i in range(len(df['Entrada'])):
     RNAdata.addSample(float(df['Entrada'][i]/max(df['Entrada'])), float(df['Saída'][i]/max(df['Saída']))) #normalizando dados de 0 a 1
 
 #Inicializando rede Neural
-RNA = buildNetwork(1, 100, 150, 200, 300, 400, 500, 400, 300, 200, 100, 150, 200, 300, 400, 500, 400, 300, 200, 100, 1, bias=True) #buildNetwork(num Neuronios na entrada, num neuronio na camada oculta, num neuronio na saida)
+RNA = buildNetwork(1, 100, 150, 200, 300, 400, 500, 400, 300, 200, 100, 1, bias=True) #buildNetwork(num Neuronios na entrada, num neuronio na camada oculta, num neuronio na saida)
 #print(RNA['in'])
 #print(RNA['hidden0'])
 #print(RNA['out'])
