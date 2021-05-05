@@ -36,6 +36,15 @@ Para investigar em como chegar em valores "ideais" adotamos valores iniciais par
 - Número de neurônios na camada oculta = 100
 - Número de camadas oculta = 1
 
+#### Estudo de Erro
+Foi realizado um estudo de erro e como ele varia de acordo com o numero de épocas.
+
+###### Grafico de Erro: ÉPOCAS x %:
+![Grafico 01](https://postimg.cc/BPcfShkL "Grafico 01")
+![Grafico 02](https://postimg.cc/7bgkn6hH "Grafico 02")
+![Grafico 03](https://postimg.cc/Ln2MCpgz "Grafico 03")
+![Grafico 04](https://postimg.cc/bsgf4B14 "Grafico 04")
+
 ##### Variando Número de Camadas:
 Nesse teste o objetivo foi **variar o número de camadas** e os demais estarem fixados afim de ver o seu impacto frente as outras variaveis.<br>
 
