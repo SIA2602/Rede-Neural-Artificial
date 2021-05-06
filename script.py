@@ -10,9 +10,18 @@ import matplotlib.pyplot as plt
 
 #Para geracao de numeros aleatorios
 from random import random
+from random import sample
 
 #Carregando dados da planilha excel
 df = pd.read_excel("assets/dadoLeitura/dadosTrabalhoRNA.xlsx",  engine='openpyxl', dtype={'Entrada':int, 'Saída':int})
+
+#Selecionando os 20% dos dados para testar a RNA
+listDadosEntrada = sample(list(df['Entrada']), int(len(df['Entrada'])*0.2)) #armazena os 20% dos dados das listas de entrada
+listDadosSaida = []
+for j in range(len(listDadosEntrada)):    
+    for i in range(len(df['Entrada'])):    
+        if(df['Entrada'][i] == listDadosEntrada[j]):
+            listDadosSaida.append(df['Saída'][i])
 
 #Setando dados
 RNAdata = SupervisedDataSet(1, 1) #entra 1 dado e sai 1 dado
@@ -20,7 +29,7 @@ for i in range(len(df['Entrada'])):
     RNAdata.addSample(float(df['Entrada'][i]/max(df['Entrada'])), float(df['Saída'][i]/max(df['Saída']))) #normalizando dados de 0 a 1
 
 #Inicializando rede Neural
-RNA = buildNetwork(1, 100, 150, 200, 300, 400, 500, 400, 300, 200, 100, 1, bias=True) #buildNetwork(num Neuronios na entrada, num neuronio na camada oculta, num neuronio na saida)
+RNA = buildNetwork(1, 100, 100, 100, 1, bias=True) #buildNetwork(num Neuronios na entrada, num neuronio na camada oculta, num neuronio na saida)
 #print(RNA['in'])
 #print(RNA['hidden0'])
 #print(RNA['out'])
@@ -45,10 +54,16 @@ for i in range(len(entrada)):
     saida.append(RNA.activate([entrada[i]])*max(df['Saída']))    
     entrada[i] = entrada[i]*max(df['Entrada'])
 
+listDadosSaidaRNA = []
+for i in range(len(listDadosEntrada)):
+    listDadosSaidaRNA.append(RNA.activate([listDadosEntrada[i]/max(df['Entrada'])])*max(df['Saída']))
+
 #Plotando Graficos
 fig, ax = plt.subplots()
 ax.plot(df['Entrada'], df['Saída'])
 ax.plot(entrada, saida, '-')
+ax.plot(listDadosEntrada, listDadosSaida, 'o')
+ax.plot(listDadosEntrada, listDadosSaidaRNA, 'o')
 ax.grid()
 
 fig, ax1 = plt.subplots()
