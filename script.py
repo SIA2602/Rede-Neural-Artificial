@@ -29,7 +29,7 @@ for i in range(len(df['Entrada'])):
     RNAdata.addSample(float(df['Entrada'][i]/max(df['Entrada'])), float(df['Saída'][i]/max(df['Saída']))) #normalizando dados de 0 a 1
 
 #Inicializando rede Neural
-RNA = buildNetwork(1, 100, 100, 100, 1, bias=True) #buildNetwork(num Neuronios na entrada, num neuronio na camada oculta, num neuronio na saida)
+RNA = buildNetwork(1, 100, 100, 100, 100, 100, 1, bias=True) #buildNetwork(num Neuronios na entrada, num neuronio na camada oculta, num neuronio na saida)
 #print(RNA['in'])
 #print(RNA['hidden0'])
 #print(RNA['out'])
@@ -71,3 +71,16 @@ ax1.plot(x_err, y_err, '-')
 ax1.grid()
 
 plt.show()
+
+#Esperando entrada de 0-1 para visualizar no grafico
+while(True):
+    entrada = float(input("Digite o valor de entrada entre 0-1: "))    
+    saida = RNA.activate([entrada])*max(df['Saída'])
+    entrada = entrada*max(df['Entrada'])
+    print(entrada, saida)
+    #Plotando Graficos
+    fig, ax = plt.subplots()
+    ax.plot(df['Entrada'], df['Saída'])
+    ax.plot(entrada, saida, 'o')    
+    ax1.grid()
+    plt.show()

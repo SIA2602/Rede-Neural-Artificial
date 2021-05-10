@@ -31,10 +31,11 @@ No treinamento da RNA temos 3 variaveis que precisam ser achados seus valores "i
 2. Número de neurônios na camada oculta;
 3. Número de camadas oculta.
 
-Para investigar em como chegar em valores "ideais" adotamos valores iniciais para as três variáveis sendo:<br>
-- Número de Épocas = 10000
+Para investigar em como chegar em valores "ideais" adotamos valores iniciais para as duas variáveis sendo:<br>
 - Número de neurônios na camada oculta = 100
 - Número de camadas oculta = 1
+
+Para o Número de Épocas foi feito um estudo com relacao ao erro, esse erro serve como base para saber até quanto é necessario para se treinar a RNA sem a necessidade de se treinar pouco ou muito.
 
 #### Estudo de Erro
 Foi realizado um estudo de erro e como ele varia de acordo com o numero de épocas.
@@ -45,26 +46,26 @@ Foi realizado um estudo de erro e como ele varia de acordo com o numero de époc
 ![Grafico 03](https://i.postimg.cc/bN2NvYzF/Erro03.png "Grafico 03")
 ![Grafico 04](https://i.postimg.cc/RZ5CJrhC/Erro04.png "Grafico 04")
 
-##### Variando Número de Camadas:
-Nesse teste o objetivo foi **variar o número de camadas** e os demais estarem fixados afim de ver o seu impacto frente as outras variaveis.<br>
+De acordo com o gráfico acima, para os dados entregues um numero de 100 épocas já são suficientes para se ter um erro que tenda a um comportamento assintótico, ou seja, tendendo a um valor tendendo a zero com pouca oscilação de valor.
 
-###### Camadas = 1:
-![Num. Camadas = 1](https://i.postimg.cc/L4nvQVjy/E1x1-C1x100-S1x1-EP10000.png "Num. Camadas = 1")
+#### Topologias:
+Nesse teste o objetivo foi descobrir três topologias que atendesse ao desafio proposto, as topologias depois de varios testes obtidos foram:<br>
 
-###### Camadas = 2:
-![Num. Camadas = 2](https://i.postimg.cc/XJhK6T9s/E1x1-C2x100-S1x1-EP10000.png "Num. Camadas = 2")
+##### Topologia 01: Épocas = 10.000; Camadas = 10 e Número de neurônios = 100
+Nessa topologia estudamos o caso de ter varias camadas com a mesma quantidade de neurônios e um número grande de épocas para ver justamente se haveria uma influencia na RNA.<br>
+![Num. Camadas = 1](https://i.postimg.cc/659GmfJx/E1x1-C10x100-S1x1-EP10000.png "Num. Camadas = 1")<br>
+Foi observando diminuindo o número de épocas que tem um impacto significativo no aprendizado da RNA mas não é algo que tenha um alto impacto.
 
-###### Camadas = 3:
-![Num. Camadas = 3](https://i.postimg.cc/BbHF9tSv/E1x1-C3x100-S1x1-EP10000.png "Num. Camadas = 3")
+##### Topologia 02: Épocas = 2.000; Camadas e Neurônios com a configuração = [100, 500, 1000, 500, 100]
+Nesta topologia o objetivo foi realizar um estudo da interferência de criar camadas com diferentes numeros de neurônios. No segundo estudo diminuimos o número de épocas visto que um número muito grande seria desnecessário e só comprometeria o tempo de treinamento.<br>
+![Num. Camadas = 1](https://i.postimg.cc/BZ5KpwzC/E1x1-C1x100-C1x500-C1x1000-C1x500-C1x100-S1x1-EP2000.png "Num. Camadas = 1")<br>
+É observado que não houve perda no aprendizado diminuindo o numero de épocas e que variando o numero de camadas com diferentes numeros de neurônios foi obtido um resultado mais positivo que em comparação com o primeiro estudo.
 
-###### Camadas = 4:
-![Num. Camadas = 4](https://i.postimg.cc/QMCWNf8w/E1x1-C4x100-S1x1-EP10000.png "Num. Camadas = 4")
+##### Topologia 03: Épocas = 100; Camadas e Neurônios com a configuração = [100, 150, 200, 300, 400, 500, 400, 300, 200, 100]
+Nesse ultimo estudo é colocado em xeque se o numero mínimo de épocas para treino da RNA realmente é suficiente, para tanto é aumentado o numero de camadas e variado o numero de neurônios.<br> 
+![Num. Camadas = 1](https://i.postimg.cc/7hNJLfzR/E1x1-C1x100-C1x150-C1x200-C1x300-C1x400-C1x500-C1x400-C1x300-C1x200-C1x100-S1x1-EP100.png "Num. Camadas = 1")<br>
+Conforme se observa usando o numero mínimo de épocas e variando o numero de neurônios e camadas se obteve um resultado positivo em comparação aos demais estudos. 
 
-###### Camadas = 5:
-![Num. Camadas = 5](https://i.postimg.cc/L5KqTRtF/E1x1-C5x100-S1x1-EP10000.png "Num. Camadas = 5")
-
-##### Variando Número de Neurônios:
-Como no teste anterior foi verificado que uma configuração de 5 camadas tem um impacto significativo na resposta de saída, **então fixamos o número de camadas em 5** e também **fixamos a número de épocas** e **variamos apenas os numeros de neurônios**.
-
-###### Neuronios = 100:
-![Num. Neurônios = 100](https://i.postimg.cc/L5KqTRtF/E1x1-C5x100-S1x1-EP10000.png "Num. Camadas = 5")
+### Conclusões
+No estudo das 3 Topologias se pode observar que com base no gráfico de erro do treinamento da RNA podemos tirar um numero mínimo de epocas que podemos submeter a RNA para aprendizado. No entanto ao utilizar esse numero minimo de épocas para treino é necessário se atentar ao numero de camadas e neurônios pois eles tem forte influencia no aprendizado.<br>
+Nos estudos se pode observar que quanto maior e variada a sua topologia em relação ao numero de camadas e neurônios temos resultados no aprendizado mais satisfatórios. Nos nossos testes dispunhamos de um computador com baixo processamento e portanto limitou as simulações.
