@@ -3,6 +3,7 @@ import pandas as pd #Usado para ler os dados da planilha Excel
 from pybrain.tools.shortcuts import buildNetwork #usada para criar a rede neural
 from pybrain.datasets import SupervisedDataSet #usado para ler os dados para a rede neural
 from pybrain.supervised.trainers import BackpropTrainer #usado para treinar a rede neural
+from pybrain.tools.customxml import NetworkWriter #usado para salvar RNA treinada
 
 #Para Impressao dos dados
 import matplotlib
@@ -29,7 +30,7 @@ for i in range(len(df['Entrada'])):
     RNAdata.addSample(float(df['Entrada'][i]/max(df['Entrada'])), float(df['Saída'][i]/max(df['Saída']))) #normalizando dados de 0 a 1
 
 #Inicializando rede Neural
-RNA = buildNetwork(1, 100, 100, 100, 100, 100, 1, bias=True) #buildNetwork(num Neuronios na entrada, num neuronio na camada oculta, num neuronio na saida)
+RNA = buildNetwork(1, 100, 500, 1000, 500, 100, 1, bias=True) #buildNetwork(num Neuronios na entrada, num neuronio na camada oculta, num neuronio na saida)
 #print(RNA['in'])
 #print(RNA['hidden0'])
 #print(RNA['out'])
@@ -39,9 +40,11 @@ RNA = buildNetwork(1, 100, 100, 100, 100, 100, 1, bias=True) #buildNetwork(num N
 trainer = BackpropTrainer(RNA, RNAdata)
 x_err = [] #lista que vai armazenar o range de epocas
 y_err = [] #lista que vai armazenar o erro em %
-for i in range(100): #treinando a rede neural com numero de epocas
+for i in range(2000): #treinando a rede neural com numero de epocas
     y_err.append(trainer.train()*100)
     x_err.append(i+1)
+
+NetworkWriter.writeToFile(RNA, 'assets/treinoRNA/topologia02.xml') #Salvando RNA Treinada
 
 #Simulando saida de dados     
 #saida = RNA.activate([0.40])*max(df['Saída']) #convetendo valor normalizado para mesma escala dos dados de saida
@@ -71,16 +74,3 @@ ax1.plot(x_err, y_err, '-')
 ax1.grid()
 
 plt.show()
-
-#Esperando entrada de 0-1 para visualizar no grafico
-while(True):
-    entrada = float(input("Digite o valor de entrada entre 0-1: "))    
-    saida = RNA.activate([entrada])*max(df['Saída'])
-    entrada = entrada*max(df['Entrada'])
-    print(entrada, saida)
-    #Plotando Graficos
-    fig, ax = plt.subplots()
-    ax.plot(df['Entrada'], df['Saída'])
-    ax.plot(entrada, saida, 'o')    
-    ax1.grid()
-    plt.show()

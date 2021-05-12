@@ -24,6 +24,16 @@ Instalar as seguintes bibliotecas urilizando o pip:
 - pip install pandas
 - pip install pybrain
 
+# Arquivos:
+- assets
+    - dadoLeitura
+        - dadosTrabalhoRNA.xlsx "Arquivo disponibilizado pelo professor para treinar a RNA."
+    - img "Contem as imagens das topologias treinadas."
+    - treinoRNA "Contem os treinos das topolofias em arquivo .xml"
+- README.md "Instrucoes de uso e detalhes sobre o treino da RNA."
+- readRNA.py "programa em Python responsavel por treinar a RNA e exportar o treino."
+- trainerRNA "ler a RNA treinada pelo programa readRNA.py"
+
 # Treinamento:
 
 No treinamento da RNA temos 3 variaveis que precisam ser achados seus valores "ideais" para que tenhamos um equilibrio entre tempo de simulação x processamento. As quais são:
